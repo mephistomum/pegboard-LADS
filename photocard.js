@@ -14,16 +14,6 @@
           "card relative w-full h-full cursor-pointer transform transition-transform duration-500";
         card.setAttribute("tabindex", "0");
 
-        // Front
-  //       const front = document.createElement("div");
-  //       front.className =
-  // "card-face absolute inset-0 rounded-lg overflow-hidden shadow-white border border-white/30 ";
-  //       const fimg = document.createElement("img");
-  //       fimg.src = `assets/image/front/${index}.png`;
-  //       fimg.alt = `Front of card ${index}`;
-  //       fimg.className = "w-full h-full object-cover";
-  //       front.appendChild(fimg);
-
 
 // Front
 const front = document.createElement("div");
