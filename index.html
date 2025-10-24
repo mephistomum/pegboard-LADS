@@ -21,6 +21,7 @@ body {
 }
 
 /* --- Carousel Container --- */
+/* --- Carousel Container --- */
 #carouselWrapper {
   position: relative;
   width: 100%;
@@ -42,23 +43,45 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: visible; /* ensure behind image isn’t clipped */
 }
 
+/* Default: owner in front */
 .owner-img {
   position: relative;
-  z-index: 5; /* bring owner image in front */
+  z-index: 5;
 }
 
 .owner-img img {
   max-width: 38vw;
   border-radius: 1rem;
   transform: translateX(2vw);
+  display: block;
 }
 
+/* --- Only for owners behind pegboard --- */
+.behind-pegboard .owner-img {
+  position: absolute;
+  inset: 0; /* fill the section */
+  display: contents;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* behind pegboard */
+  pointer-events: none; /* avoid blocking pegboard buttons */
+}
+
+.behind-pegboard .owner-img img {
+  max-width: 38vw;
+  border-radius: 1rem;
+  transform: translateX(2vw);
+  opacity: 0.95; /* optional: subtle depth effect */
+}
+
+/* --- Pegboard wrapper --- */
 .pegboard-wrapper {
   position: relative;
   display: inline-block;
-  z-index: 1;
+  z-index: 2;
 }
 
 .pegboard-wrapper::before {
@@ -70,7 +93,7 @@ body {
   bottom: -1.5vw;
   background: white;
   border-radius: 3vw;
-  z-index: -1;
+  z-index: -2;
 }
 
 .pegboard {
@@ -80,6 +103,7 @@ body {
   display: block;
   transform: translateX(-2vw);
 }
+
 
 /* --- Headphone / Photo Buttons --- */
 .playSpotify
@@ -237,12 +261,14 @@ body {
   animation: fadeIn 0.4s ease;
 }
 
+/* Each image in modal */
 #photoModal img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.3);
+  max-width: 45vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 10px;
   animation: zoomIn 0.4s ease;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
 }
 
 #closeModal {
@@ -262,6 +288,39 @@ body {
   from { transform: scale(0.8); opacity: 0; } 
   to { transform: scale(1); opacity: 1; }
 }
+
+
+/* Container inside modal */
+.multi-photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7vw;
+  flex-wrap: wrap;
+  max-width: 90vw;
+  max-height: 100%;
+  overflow-y: auto;
+  border-radius: 10px;
+   overflow: visible; 
+
+}
+
+
+
+/* Stack vertically on narrow screens */
+@media (max-width: 768px) {
+  .multi-photo-container {
+    gap: 4vw;
+max-width: 105vw;
+  }
+
+#photoModal img {
+
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+}
+
   </style>
 </head>
 
@@ -298,7 +357,7 @@ body {
 <!-- 🖼️ Photo Modal -->
 <div id="photoModal">
   <span id="closeModal">×</span>
-  <img id="modalImage" src="" alt="Preview">
+  <div id="modalContent" class="multi-photo-container"></div>
 </div>
 
 <script src="owner.js"></script>

@@ -588,8 +588,8 @@ video {
   }
 }
 
-.pointer-events-none {
-  pointer-events: none;
+.visible {
+  visibility: visible;
 }
 
 .fixed {
@@ -602,10 +602,6 @@ video {
 
 .relative {
   position: relative;
-}
-
-.inset-0 {
-  inset: 0px;
 }
 
 .left-4 {
@@ -628,52 +624,16 @@ video {
   display: flex;
 }
 
-.grid {
-  display: grid;
-}
-
 .hidden {
   display: none;
-}
-
-.aspect-\[55\/85\] {
-  aspect-ratio: 55/85;
-}
-
-.aspect-\[ratio\] {
-  aspect-ratio: ratio;
-}
-
-.h-full {
-  height: 100%;
-}
-
-.w-\[120px\] {
-  width: 120px;
-}
-
-.w-full {
-  width: 100%;
 }
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
-.rounded {
-  border-radius: 0.25rem;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .rounded-xl {
@@ -684,17 +644,8 @@ video {
   border-width: 1px;
 }
 
-.border-white\/30 {
-  border-color: rgb(255 255 255 / 0.3);
-}
-
 .bg-white\/20 {
   background-color: rgb(255 255 255 / 0.2);
-}
-
-.object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .px-3 {
@@ -720,11 +671,6 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.shadow-white {
-  --tw-shadow-color: #fff;
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
 .backdrop-blur-md {
   --tw-backdrop-blur: blur(12px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
@@ -739,29 +685,11 @@ video {
   transition-duration: 150ms;
 }
 
-.transition-transform {
-  transition-property: transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.duration-500 {
-  transition-duration: 500ms;
-}
-
-.ease-out {
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-
 .hover\:bg-white\/40:hover {
   background-color: rgb(255 255 255 / 0.4);
 }
 
 @media (min-width: 640px) {
-  .sm\:w-\[150px\] {
-    width: 150px;
-  }
-
   .sm\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -778,17 +706,7 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\:w-\[180px\] {
-    width: 180px;
-  }
-
   .md\:text-\[17px\] {
     font-size: 17px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:w-\[220px\] {
-    width: 220px;
   }
 }

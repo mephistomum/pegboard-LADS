@@ -53,14 +53,14 @@ const owners = [
     photoframePos: { bottom: "1vw", right: "22vw" }
   },
   {
-    name: "reenie",
-    ownerImg: "assets/image/owner/reenie.png",
+    name: "Syreenie",
+    ownerImg: "assets/image/owner/Syreenie.png",
     pegboardImg: "assets/image/pegboard/Syreenieee.png",
     track: "https://open.spotify.com/embed/track/3HMY0r2BAdpasXMY8rseR0?utm_source=generator",
     headphonePos: { bottom: "8vw", right: "0.5vw" },
     photostrips: [
       { img: "assets/image/photostrip/Syreenie1.png", pos: { bottom: "6vw", left: "23.5vw" } },
-      { img: "assets/image/photostrip/Syreenie2.png", pos: { bottom: "3vw", left: "18.5vw" } }
+      { img: "assets/image/photostrip/Syreenie2.png", pos: { bottom: "3vw", left: "19.5vw" } }
     ],
     photoframe: "assets/image/photoframe/syreenie.jpg",
     photoframePos: { bottom: "1vw", right: "27vw" }
@@ -100,9 +100,11 @@ const owners = [
     track: "https://open.spotify.com/embed/track/43mnNatwMMydJ4CxMdQVnJ?utm_source=generator",
     headphonePos: { bottom: "29vw", right: "15.5vw" },
     photostrips: [
-      { img: "assets/image/photostrip/KumineOfficial1.png", pos: { bottom: "9vw", left: "9vw" } },
-      { img: "assets/image/photostrip/KumineOfficial2.png", pos: { bottom: "11vw", left: "0vw" } }
-    ],
+  { img: "assets/image/photostrip/KumineOfficial1.png", pos: { bottom: "14vw", left: "9vw" } },
+  { img: "assets/image/photostrip/KumineOfficial2.png", pos: { bottom: "11vw", left: "0vw" } },
+  { img: "assets/image/photostrip/KumineOfficial2.png", pos: { bottom: "3vw", left: "1vw" } },
+  { img: "assets/image/photostrip/KumineOfficial1.png", pos: { bottom: "4vw", left: "9vw" } }
+],
     photoframe: "assets/image/photoframe/KumineOfficial.jpg",
     photoframePos: { bottom: "34vw", right: "7vw" }
   },
@@ -140,7 +142,7 @@ const owners = [
     headphonePos: { bottom: "0vw", right: "-0.5vw" },
     photostrips: [
       { img: "assets/image/photostrip/ArcaneVix1.png", pos: { bottom: "7vw", left: "7.5vw" } },
-      { img: "assets/image/photostrip/ArcaneVix2.png", pos: { bottom: "3vw", left: "13.5vw" } }
+      { img: "assets/image/photostrip/ArcaneVix2.png", pos: { bottom: "3vw", left: "13vw" } }
     ],
     photoframe: "assets/image/photoframe/ArcaneVix.jpg",
     photoframePos: { bottom: "0vw", right: "18vw" }

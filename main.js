@@ -6,7 +6,11 @@ owners.forEach(o => {
   section.className = "owner-section";
   section.dataset.track = o.track;
 
-  // Build the photostrip buttons dynamically
+  // 👇 Add this line to make only ArcaneVix go behind the pegboard
+  if (o.name === "ArcaneVix") {
+    section.classList.add("behind-pegboard");
+  }
+
   let photostripButtons = "";
   o.photostrips.forEach(strip => {
     photostripButtons += `
@@ -15,7 +19,6 @@ owners.forEach(o => {
     `;
   });
 
-  // Build the full section
   section.innerHTML = `
     <div class="owner-img">
       <img src="${o.ownerImg}" alt="${o.name}">
@@ -32,6 +35,7 @@ owners.forEach(o => {
 
   container.appendChild(section);
 });
+
 
 // ----- Carousel Logic -----
 let currentIndex = 0;
@@ -73,14 +77,101 @@ toggleBtn.addEventListener("click", () => {
 });
 
 // ----- Photo Modal Logic -----
+// ----- Photo Modal Logic -----
 const modal = document.getElementById("photoModal");
-const modalImg = document.getElementById("modalImage");
+const modalContent = document.getElementById("modalContent");
 const closeModal = document.getElementById("closeModal");
 
 document.addEventListener("click", e => {
   if (e.target.classList.contains("viewPhoto")) {
-    const imgSrc = e.target.dataset.src;
-    modalImg.src = imgSrc;
+    const section = e.target.closest(".owner-section");
+    const ownerName = section.querySelector(".owner-img img").alt;
+    const clickedSrc = e.target.dataset.src;
+    const clickedType = e.target.dataset.type;
+
+    modalContent.innerHTML = ""; // clear previous images
+
+    // Check if owner is miwaluvsy and button type is photostrip
+    if (ownerName === "miwaluvsy" && clickedType === "strip") {
+      const miwaOwner = owners.find(o => o.name === "miwaluvsy");
+      miwaOwner.photostrips.forEach(strip => {
+        const img = document.createElement("img");
+        img.src = strip.img;
+        img.alt = "Photo";
+        modalContent.appendChild(img);
+      });
+    } 
+       else if (ownerName === "mephistomum" && clickedType === "strip") {
+      const izzyOwner = owners.find(o => o.name === "mephistomum");
+      izzyOwner.photostrips.forEach(strip => {
+        const img = document.createElement("img");
+        img.src = strip.img;
+        img.alt = "Photo";
+        modalContent.appendChild(img);
+      });
+    }
+      else if (ownerName === "snowfllay" && clickedType === "strip") {
+      const snowfllayOwner = owners.find(o => o.name === "snowfllay");
+      snowfllayOwner.photostrips.forEach(strip => {
+        const img = document.createElement("img");
+        img.src = strip.img;
+        img.alt = "Photo";
+        modalContent.appendChild(img);
+      });
+    }
+        else if (ownerName === "miffymoch" && clickedType === "strip") {
+      const miffymochOwner = owners.find(o => o.name === "miffymoch");
+      miffymochOwner.photostrips.forEach(strip => {
+        const img = document.createElement("img");
+        img.src = strip.img;
+        img.alt = "Photo";
+        modalContent.appendChild(img);
+      });
+    }
+         else if (ownerName === "Syreenie" && clickedType === "strip") {
+      const reenieOwner = owners.find(o => o.name === "Syreenie");
+      reenieOwner.photostrips.forEach(strip => {
+        const img = document.createElement("img");
+        img.src = strip.img;
+        img.alt = "Photo";
+        modalContent.appendChild(img);
+      });
+    }
+          else if (ownerName === "catsyIus" && clickedType === "strip") {
+      const catsyIusOwner = owners.find(o => o.name === "catsyIus");
+      catsyIusOwner.photostrips.forEach(strip => {
+        const img = document.createElement("img");
+        img.src = strip.img;
+        img.alt = "Photo";
+        modalContent.appendChild(img);
+      });
+    }
+               else if (ownerName === "alyaa_ayo" && clickedType === "strip") {
+      const alyaa_ayoOwner = owners.find(o => o.name === "alyaa_ayo");
+      alyaa_ayoOwner.photostrips.forEach(strip => {
+        const img = document.createElement("img");
+        img.src = strip.img;
+        img.alt = "Photo";
+        modalContent.appendChild(img);
+      });
+    }
+                else if (ownerName === "ArcaneVix" && clickedType === "strip") {
+      const ArcaneVixOwner = owners.find(o => o.name === "ArcaneVix");
+      ArcaneVixOwner.photostrips.forEach(strip => {
+        const img = document.createElement("img");
+        img.src = strip.img;
+        img.alt = "Photo";
+        modalContent.appendChild(img);
+      });
+    }
+    else {
+      // Default: show one image
+      const img = document.createElement("img");
+      img.src = clickedSrc;
+      img.alt = "Photo";
+      modalContent.appendChild(img);
+    }
+
     modal.style.display = "flex";
   }
 });
