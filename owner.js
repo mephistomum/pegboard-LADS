@@ -126,13 +126,13 @@ const owners = [
     ownerImg: "assets/image/owner/snowyplli.png",
     pegboardImg: "assets/image/pegboard/snowyplli.png",
     track: "https://open.spotify.com/embed/track/5DxDLsW6PsLz5gkwC7Mk5S?utm_source=generator",
-    headphonePos: { bottom: "27vw", right: "0.5vw" },
+    headphonePos: { bottom: "14vw", right: "24.5vw" },
     photostrips: [
-      { img: "assets/image/photostrip/snowyplli1.png", pos: { bottom: "32vw", left: "8vw" } },
-      { img: "assets/image/photostrip/snowyplli2.png", pos: { bottom: "17vw", left: "6.5vw" } }
+      { img: "assets/image/photostrip/snowyplli1.png", pos: { bottom: "22vw", left: "23vw" } },
+      { img: "assets/image/photostrip/snowyplli2.png", pos: { bottom: "22vw", left: "28.5vw" } }
     ],
     photoframe: "assets/image/photoframe/snowyplli.jpg",
-    photoframePos: { bottom: "1vw", right: "22vw" }
+    photoframePos: { bottom: "8vw", right: "11vw" }
   },
   {
     name: "ArcaneVix",
@@ -155,8 +155,10 @@ const owners = [
     track: "https://open.spotify.com/embed/track/3HMY0r2BAdpasXMY8rseR0?utm_source=generator",
     headphonePos: { bottom: "-1vw", right: "1.5vw" },
     photostrips: [
+      { img: "assets/image/photostrip/AlexHanayuki1.png", pos: { bottom: "25vw", left: "36.5vw" } },
+      { img: "assets/image/photostrip/AlexHanayuki2.png", pos: { bottom: "25vw", left: "28.5vw" } },      
       { img: "assets/image/photostrip/AlexHanayuki1.png", pos: { bottom: "18vw", left: "36.5vw" } },
-      { img: "assets/image/photostrip/AlexHanayuki2.png", pos: { bottom: "25vw", left: "28.5vw" } }
+      { img: "assets/image/photostrip/AlexHanayuki2.png", pos: { bottom: "16vw", left: "28.5vw" } }
     ],
     photoframe: "assets/image/photoframe/AlexHanayuki.jpg",
     photoframePos: { bottom: "35vw", right: "6vw" }
@@ -166,39 +168,39 @@ const owners = [
     ownerImg: "assets/image/owner/Ryuno_Aika.png",
     pegboardImg: "assets/image/pegboard/Ryuno_Aika.png",
     track: "https://open.spotify.com/embed/track/3HMY0r2BAdpasXMY8rseR0?utm_source=generator",
-    headphonePos: { bottom: "8vw", right: "0.5vw" },
+    headphonePos: { bottom: "-1vw", right: "28.5vw" },
     photostrips: [
-      { img: "assets/image/photostrip/Ryuno_Aika1.png", pos: { bottom: "6vw", left: "23.5vw" } },
-      { img: "assets/image/photostrip/Ryuno_Aika2.png", pos: { bottom: "3vw", left: "18.5vw" } }
+      { img: "assets/image/photostrip/Ryuno_Aika1.png", pos: { bottom: "7vw", left: "20.5vw" } },
+      { img: "assets/image/photostrip/Ryuno_Aika2.png", pos: { bottom: "10vw", left: "14.5vw" } }
     ],
     photoframe: "assets/image/photoframe/Ryuno_Aika.jpg",
-    photoframePos: { bottom: "1vw", right: "27vw" }
+    photoframePos: { bottom: "22vw", right: "25vw" }
   },
   {
     name: "taeohbeng",
     ownerImg: "assets/image/owner/taeohbeng.png",
     pegboardImg: "assets/image/pegboard/taeohbeng.png",
     track: "https://open.spotify.com/embed/track/43mnNatwMMydJ4CxMdQVnJ?utm_source=generator",
-    headphonePos: { bottom: "29vw", right: "10.5vw" },
+    headphonePos: { bottom: "1vw", right: "1.5vw" },
     photostrips: [
-      { img: "assets/image/photostrip/taeohbeng1.png", pos: { bottom: "1vw", left: "10vw" } },
-      { img: "assets/image/photostrip/taeohbeng2.png", pos: { bottom: "6vw", left: "14vw" } }
+      { img: "assets/image/photostrip/taeohbeng1.png", pos: { bottom: "3vw", left: "10vw" } },
+      { img: "assets/image/photostrip/taeohbeng2.png", pos: { bottom: "9vw", left: "14vw" } }
     ],
     photoframe: "assets/image/photoframe/taeohbeng.jpg",
-    photoframePos: { bottom: "2vw", right: "18vw" }
+    photoframePos: { bottom: "1vw", right: "19.5vw" }
   },
   {
-    name: "sug4rk00ki3",
-    ownerImg: "assets/image/owner/sug4rk00ki3.png",
-    pegboardImg: "assets/image/pegboard/sug4rk00ki3.png",
+    name: "maiappleb",
+    ownerImg: "assets/image/owner/maiappleb.png",
+    pegboardImg: "assets/image/pegboard/maiappleb.png",
     track: "https://open.spotify.com/embed/track/1JYtwhnjpVxQeYE9uyU2Lx?utm_source=generator",
-    headphonePos: { bottom: "1vw", right: "2.5vw" },
+    headphonePos: { bottom: "1vw", right: "3.5vw" },
     photostrips: [
-      { img: "assets/image/photostrip/sug4rk00ki31.png", pos: { bottom: "3vw", left: "18vw" } },
-      { img: "assets/image/photostrip/sug4rk00ki32.png", pos: { bottom: "5vw", left: "12.5vw" } }
+      { img: "assets/image/photostrip/maiappleb1.png", pos: { bottom: "2vw", left: "8vw" } },
+      { img: "assets/image/photostrip/maiappleb2.png", pos: { bottom: "9vw", left: "11.5vw" } }
     ],
-    photoframe: "assets/image/photoframe/sug4rk00ki3.jpg",
-    photoframePos: { bottom: "4vw", right: "34vw" }
+    photoframe: "assets/image/photoframe/maiappleb.jpg",
+    photoframePos: { bottom: "3vw", right: "22vw" }
   },
   {
     name: "DearLoveLily",
@@ -287,11 +289,11 @@ const owners = [
     track: "https://open.spotify.com/embed/track/1JYtwhnjpVxQeYE9uyU2Lx?utm_source=generator",
     headphonePos: { bottom: "1vw", right: "2.5vw" },
     photostrips: [
-      { img: "assets/image/photostrip/miwaluvsy1.png", pos: { bottom: "3vw", left: "18vw" } },
-      { img: "assets/image/photostrip/miwaluvsy2.png", pos: { bottom: "3vw", left: "18vw" } }
+      { img: "assets/image/photostrip/miwaluvsy1.png", pos: { bottom: "3vw", left: "19vw" } },
+      { img: "assets/image/photostrip/miwaluvsy2.png", pos: { bottom: "0vw", left: "19vw" } }
     ],
     photoframe: "assets/image/photoframe/miwaluvsy.jpg",
-    photoframePos: { bottom: "4vw", right: "34vw" }
+    photoframePos: { bottom: "8vw", right: "27vw" }
   },
 ,
   {
