@@ -1,4 +1,4 @@
-// ----- Generate HTML -----
+// ----- Generate HTML ----- 
 const container = document.getElementById("ownersContainer");
 
 owners.forEach(o => {
@@ -6,7 +6,7 @@ owners.forEach(o => {
   section.className = "owner-section";
   section.dataset.track = o.track;
 
-  if (["ArcaneVix", "Shayma9749" , "solemyst_twt", "MochiMeowllow" , "xinghuiatus", "SylRafZayXavCal"  ].includes(o.name)) {
+  if (["ArcaneVix", "Shayma9749", "solemyst_twt", "MochiMeowllow", "xinghuiatus", "SylRafZayXavCal"].includes(o.name)) {
     section.classList.add("behind-pegboard");
   }
 
@@ -35,21 +35,57 @@ owners.forEach(o => {
     `;
   }
 
-section.innerHTML = `
-  <div class="owner-img">
-    <img src="${o.ownerImg}" alt="${o.name}" loading="lazy">
-  </div>
-  <div class="pegboard-wrapper">
-    <img src="${o.pegboardImg}" alt="Pegboard ${o.name}" class="pegboard" loading="lazy">
-    <button class="playSpotify"
-            style="bottom:${o.headphonePos.bottom}; right:${o.headphonePos.right};"></button>
-    ${photostripButtons}
-    ${photoframeButtons}
-  </div>
-`;
-
+  section.innerHTML = `
+    <div class="owner-img">
+      <img src="${o.ownerImg}" alt="${o.name}" loading="lazy">
+    </div>
+    <div class="pegboard-wrapper">
+      <img src="${o.pegboardImg}" alt="Pegboard ${o.name}" class="pegboard" loading="lazy">
+      <button class="playSpotify"
+              style="bottom:${o.headphonePos.bottom}; right:${o.headphonePos.right};"></button>
+      ${photostripButtons}
+      ${photoframeButtons}
+    </div>
+  `;
 
   container.appendChild(section);
+});
+
+
+// ✅ ----- Smart Progressive Image Preloader -----
+const progressivePreload = (images, delay = 300) => {
+  let index = 0;
+  const preloadStep = () => {
+    if (index >= images.length) return;
+    const img = new Image();
+    img.src = images[index];
+    index++;
+    setTimeout(preloadStep, delay); // space out requests to prevent HTTP2 overload
+  };
+  preloadStep();
+};
+
+const collectAllImages = () => {
+  const allImgs = [];
+  owners.forEach(o => {
+    allImgs.push(o.ownerImg, o.pegboardImg);
+
+    if (o.photostrips) {
+      o.photostrips.forEach(strip => allImgs.push(strip.img));
+    }
+
+    if (o.photoframes) {
+      o.photoframes.forEach(frame => allImgs.push(frame.img));
+    } else if (o.photoframe) {
+      allImgs.push(o.photoframe);
+    }
+  });
+  return allImgs;
+};
+
+window.addEventListener("load", () => {
+  const allImgs = collectAllImages();
+  progressivePreload(allImgs, 200); // preload slowly after load
 });
 
 
@@ -71,6 +107,7 @@ document.getElementById("prevBtn").addEventListener("click", () => {
   updateCarousel();
 });
 
+
 // ----- Spotify Logic -----
 const spotifyContainer = document.getElementById("spotifyContainer");
 const spotifyPlayer = document.getElementById("spotifyPlayer");
@@ -83,13 +120,13 @@ document.addEventListener("click", e => {
     const section = e.target.closest(".owner-section");
     const trackURL = section.dataset.track;
 
-    // Set the new track
+    // Set new track
     spotifyPlayer.src = trackURL;
 
-    // Always show + un-minimize the player
+    // Show and un-minimize player
     spotifyContainer.style.display = "block";
     spotifyContainer.classList.remove("minimized");
-    toggleBtn.textContent = "–"; // set back to expanded icon
+    toggleBtn.textContent = "–";
   }
 });
 
@@ -99,7 +136,6 @@ toggleBtn.addEventListener("click", () => {
 });
 
 
-// ----- Photo Modal Logic -----
 // ----- Photo Modal Logic -----
 const modal = document.getElementById("photoModal");
 const modalContent = document.getElementById("modalContent");
@@ -113,40 +149,15 @@ document.addEventListener("click", e => {
   const clickedSrc = e.target.dataset.src;
   const clickedType = e.target.dataset.type;
 
-  modalContent.innerHTML = ""; // Clear previous images
+  modalContent.innerHTML = ""; // Clear old content
 
-  // ✅ List of owners that have multiple photostrips
   const multiPhotoOwners = [
-    "miwaluvsy",
-    "mephistomum",
-    "snowfllay",
-    "miffymoch",
-    "Syreenie",
-    "catsyIus",
-    "alyaa_ayo",
-    "ArcaneVix",
-    "snowyplli",
-    "maiappleb",
-    "taeohbeng",
-    "DearLoveLily",
-    "irnemin",
-    "sylusplume",
-    "Ryuno_Aika",
-    "xinghuiatus",
-    "haujux",
-    "cremezayniee",
-     "shenliquor",
-     "Dew_Lus",
-     "missapplelle",
-     "galaxyboo_",
-     "acahthzzn",
-     "5y1u541ife",
-     "rafayelpregnant",
-     "ai00_rin",
-     "applecrow_lover"
+    "miwaluvsy", "mephistomum", "snowfllay", "miffymoch", "Syreenie", "catsyIus", "alyaa_ayo",
+    "ArcaneVix", "snowyplli", "maiappleb", "taeohbeng", "DearLoveLily", "irnemin", "sylusplume",
+    "Ryuno_Aika", "xinghuiatus", "haujux", "cremezayniee", "shenliquor", "Dew_Lus", "missapplelle",
+    "galaxyboo_", "acahthzzn", "5y1u541ife", "rafayelpregnant", "ai00_rin", "applecrow_lover"
   ];
 
-  // ✅ Show all photostrips for certain owners
   if (clickedType === "strip" && multiPhotoOwners.includes(ownerName)) {
     const owner = owners.find(o => o.name === ownerName);
     if (owner?.photostrips) {
@@ -154,23 +165,20 @@ document.addEventListener("click", e => {
         const img = document.createElement("img");
         img.src = strip.img;
         img.alt = "Photo";
-        img.loading = "lazy"; 
+        img.loading = "lazy";
         modalContent.appendChild(img);
       });
     }
-  } 
-  // ✅ Default: show single photo
-  else {
+  } else {
     const img = document.createElement("img");
     img.src = clickedSrc;
     img.alt = "Photo";
-    img.loading = "lazy"; 
+    img.loading = "lazy";
     modalContent.appendChild(img);
   }
 
   modal.style.display = "flex";
 });
-
 
 closeModal.addEventListener("click", () => {
   modal.style.display = "none";
