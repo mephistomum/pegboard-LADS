@@ -321,6 +321,88 @@ max-width: 105vw;
 
 }
 
+
+
+/* PEGBOARD MENU */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+.pegboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.pegboard-grid-item {
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+
+.pegboard-grid-item img {
+  width: 100%;
+  border: 3px solid white;
+  border-radius: 12px;
+}
+
+.pegboard-grid-item span {
+  display: block;
+  margin-top: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+#showAllPegboards {
+  top: calc(1rem + 2.5rem); /* adjust to be just below back button */
+  left: 0.5rem;                /* align with back button */
+  background: none;          /* remove default button styles */
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#showAllPegboards img {
+  display: block;
+  width: 60px;   /* default width */
+  height: 60px;  /* default height */
+}
+
+@media (min-width: 640px) {
+  #showAllPegboards img {
+    width: 150px;  /* bigger on larger screens */
+    height: 150px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #showAllPegboards img {
+    width: 250px;  /* bigger on larger screens */
+    height: 250px;
+  }
+}
+
+
+
+
   </style>
 </head>
 
@@ -336,6 +418,14 @@ max-width: 105vw;
           text-[13px] sm:text-[15px] md:text-[17px]">
   ← 
 </a>
+
+<!-- Show All Pegboards Button -->
+<!-- Catalogue Button -->
+<button id="showAllPegboards" class="fixed z-50">
+  <img src="assets/image/catalogue.png" alt="Catalogue" class="w-12 h-12 sm:w-14 sm:h-14">
+</button>
+
+
 
 <!-- 🖼️ Carousel -->
 <div id="carouselWrapper">
@@ -360,8 +450,16 @@ max-width: 105vw;
   <div id="modalContent" class="multi-photo-container"></div>
 </div>
 
+<!-- 🖼️ Pegboards Modal -->
+<div id="pegboardModal" class="modal">
+  <span id="closePegboardModal" class="close-btn">×</span>
+  <div id="pegboardGrid" class="pegboard-grid"></div>
+</div>
+
+
 <script src="owner.js"></script>
 <script src="main.js"></script>
+<script src="pegboard.js"></script>
 
 
 </body>

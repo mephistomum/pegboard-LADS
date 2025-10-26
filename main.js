@@ -6,18 +6,34 @@ owners.forEach(o => {
   section.className = "owner-section";
   section.dataset.track = o.track;
 
-  // 👇 Add this line to make only ArcaneVix go behind the pegboard
-  if (o.name === "ArcaneVix") {
+  if (["ArcaneVix", "Shayma9749" , "solemyst_twt", "MochiMeowllow" , "xinghuiatus", "SylRafZayXavCal"  ].includes(o.name)) {
     section.classList.add("behind-pegboard");
   }
 
+  // ----- Generate photostrip buttons -----
   let photostripButtons = "";
-  o.photostrips.forEach(strip => {
+  o.photostrips?.forEach(strip => {
     photostripButtons += `
       <button class="viewPhoto" data-type="strip" data-src="${strip.img}"
               style="bottom:${strip.pos.bottom}; left:${strip.pos.left};"></button>
     `;
   });
+
+  // ----- Generate photoframe buttons -----
+  let photoframeButtons = "";
+  if (Array.isArray(o.photoframes)) {
+    o.photoframes.forEach(frame => {
+      photoframeButtons += `
+        <button class="viewPhoto" data-type="frame" data-src="${frame.img}"
+                style="bottom:${frame.pos.bottom}; right:${frame.pos.right};"></button>
+      `;
+    });
+  } else if (o.photoframe) {
+    photoframeButtons += `
+      <button class="viewPhoto" data-type="frame" data-src="${o.photoframe}"
+              style="bottom:${o.photoframePos.bottom}; right:${o.photoframePos.right};"></button>
+    `;
+  }
 
   section.innerHTML = `
     <div class="owner-img">
@@ -28,8 +44,7 @@ owners.forEach(o => {
       <button class="playSpotify"
               style="bottom:${o.headphonePos.bottom}; right:${o.headphonePos.right};"></button>
       ${photostripButtons}
-      <button class="viewPhoto" data-type="frame" data-src="${o.photoframe}"
-              style="bottom:${o.photoframePos.bottom}; right:${o.photoframePos.right};"></button>
+      ${photoframeButtons}
     </div>
   `;
 
@@ -83,125 +98,69 @@ const modalContent = document.getElementById("modalContent");
 const closeModal = document.getElementById("closeModal");
 
 document.addEventListener("click", e => {
-  if (e.target.classList.contains("viewPhoto")) {
-    const section = e.target.closest(".owner-section");
-    const ownerName = section.querySelector(".owner-img img").alt;
-    const clickedSrc = e.target.dataset.src;
-    const clickedType = e.target.dataset.type;
+  if (!e.target.classList.contains("viewPhoto")) return;
 
-    modalContent.innerHTML = ""; // clear previous images
+  const section = e.target.closest(".owner-section");
+  const ownerName = section.querySelector(".owner-img img").alt;
+  const clickedSrc = e.target.dataset.src;
+  const clickedType = e.target.dataset.type;
 
-    // Check if owner is miwaluvsy and button type is photostrip
-    if (ownerName === "miwaluvsy" && clickedType === "strip") {
-      const miwaOwner = owners.find(o => o.name === "miwaluvsy");
-      miwaOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    } 
-       else if (ownerName === "mephistomum" && clickedType === "strip") {
-      const izzyOwner = owners.find(o => o.name === "mephistomum");
-      izzyOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-      else if (ownerName === "snowfllay" && clickedType === "strip") {
-      const snowfllayOwner = owners.find(o => o.name === "snowfllay");
-      snowfllayOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-        else if (ownerName === "miffymoch" && clickedType === "strip") {
-      const miffymochOwner = owners.find(o => o.name === "miffymoch");
-      miffymochOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-         else if (ownerName === "Syreenie" && clickedType === "strip") {
-      const reenieOwner = owners.find(o => o.name === "Syreenie");
-      reenieOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-          else if (ownerName === "catsyIus" && clickedType === "strip") {
-      const catsyIusOwner = owners.find(o => o.name === "catsyIus");
-      catsyIusOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-               else if (ownerName === "alyaa_ayo" && clickedType === "strip") {
-      const alyaa_ayoOwner = owners.find(o => o.name === "alyaa_ayo");
-      alyaa_ayoOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-                else if (ownerName === "ArcaneVix" && clickedType === "strip") {
-      const ArcaneVixOwner = owners.find(o => o.name === "ArcaneVix");
-      ArcaneVixOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-                    else if (ownerName === "snowyplli" && clickedType === "strip") {
-      const snowyplliOwner = owners.find(o => o.name === "snowyplli");
-      snowyplliOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-                        else if (ownerName === "maiappleb" && clickedType === "strip") {
-      const maiapplebOwner = owners.find(o => o.name === "maiappleb");
-      maiapplebOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-                            else if (ownerName === "taeohbeng" && clickedType === "strip") {
-      const taeohbengOwner = owners.find(o => o.name === "taeohbeng");
-      taeohbengOwner.photostrips.forEach(strip => {
-        const img = document.createElement("img");
-        img.src = strip.img;
-        img.alt = "Photo";
-        modalContent.appendChild(img);
-      });
-    }
-    else {
-      // Default: show one image
-      const img = document.createElement("img");
-      img.src = clickedSrc;
-      img.alt = "Photo";
-      modalContent.appendChild(img);
-    }
+  modalContent.innerHTML = ""; // Clear previous images
 
-    modal.style.display = "flex";
+  // ✅ List of owners that have multiple photostrips
+  const multiPhotoOwners = [
+    "miwaluvsy",
+    "mephistomum",
+    "snowfllay",
+    "miffymoch",
+    "Syreenie",
+    "catsyIus",
+    "alyaa_ayo",
+    "ArcaneVix",
+    "snowyplli",
+    "maiappleb",
+    "taeohbeng",
+    "DearLoveLily",
+    "irnemin",
+    "sylusplume",
+    "Ryuno_Aika",
+    "xinghuiatus",
+    "haujux",
+    "cremezayniee",
+     "shenliquor",
+     "Dew_Lus",
+     "missapplelle",
+     "galaxyboo_",
+     "acahthzzn",
+     "5y1u541ife",
+     "rafayelpregnant",
+     "ai00_rin",
+     "applecrow_lover"
+  ];
+
+  // ✅ Show all photostrips for certain owners
+  if (clickedType === "strip" && multiPhotoOwners.includes(ownerName)) {
+    const owner = owners.find(o => o.name === ownerName);
+    if (owner?.photostrips) {
+      owner.photostrips.forEach(strip => {
+        const img = document.createElement("img");
+        img.src = strip.img;
+        img.alt = "Photo";
+        modalContent.appendChild(img);
+      });
+    }
+  } 
+  // ✅ Default: show single photo
+  else {
+    const img = document.createElement("img");
+    img.src = clickedSrc;
+    img.alt = "Photo";
+    modalContent.appendChild(img);
   }
+
+  modal.style.display = "flex";
 });
+
 
 closeModal.addEventListener("click", () => {
   modal.style.display = "none";
