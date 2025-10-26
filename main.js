@@ -35,18 +35,19 @@ owners.forEach(o => {
     `;
   }
 
-  section.innerHTML = `
-    <div class="owner-img">
-      <img src="${o.ownerImg}" alt="${o.name}">
-    </div>
-    <div class="pegboard-wrapper">
-      <img src="${o.pegboardImg}" alt="Pegboard ${o.name}" class="pegboard">
-      <button class="playSpotify"
-              style="bottom:${o.headphonePos.bottom}; right:${o.headphonePos.right};"></button>
-      ${photostripButtons}
-      ${photoframeButtons}
-    </div>
-  `;
+section.innerHTML = `
+  <div class="owner-img">
+    <img src="${o.ownerImg}" alt="${o.name}" loading="lazy">
+  </div>
+  <div class="pegboard-wrapper">
+    <img src="${o.pegboardImg}" alt="Pegboard ${o.name}" class="pegboard" loading="lazy">
+    <button class="playSpotify"
+            style="bottom:${o.headphonePos.bottom}; right:${o.headphonePos.right};"></button>
+    ${photostripButtons}
+    ${photoframeButtons}
+  </div>
+`;
+
 
   container.appendChild(section);
 });
@@ -81,8 +82,14 @@ document.addEventListener("click", e => {
   if (e.target.classList.contains("playSpotify")) {
     const section = e.target.closest(".owner-section");
     const trackURL = section.dataset.track;
+
+    // Set the new track
     spotifyPlayer.src = trackURL;
+
+    // Always show + un-minimize the player
     spotifyContainer.style.display = "block";
+    spotifyContainer.classList.remove("minimized");
+    toggleBtn.textContent = "–"; // set back to expanded icon
   }
 });
 
@@ -90,6 +97,7 @@ toggleBtn.addEventListener("click", () => {
   spotifyContainer.classList.toggle("minimized");
   toggleBtn.textContent = spotifyContainer.classList.contains("minimized") ? "+" : "–";
 });
+
 
 // ----- Photo Modal Logic -----
 // ----- Photo Modal Logic -----
@@ -146,6 +154,7 @@ document.addEventListener("click", e => {
         const img = document.createElement("img");
         img.src = strip.img;
         img.alt = "Photo";
+        img.loading = "lazy"; 
         modalContent.appendChild(img);
       });
     }
@@ -155,6 +164,7 @@ document.addEventListener("click", e => {
     const img = document.createElement("img");
     img.src = clickedSrc;
     img.alt = "Photo";
+    img.loading = "lazy"; 
     modalContent.appendChild(img);
   }
 
